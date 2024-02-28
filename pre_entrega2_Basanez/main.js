@@ -54,6 +54,7 @@ function agregarPizza() {
     // Filtra las pizzas por tipo si el usuario ha ingresado un filtro
     const pizzasFiltradas = tipo ? Object.values(inventarioPizza).filter(pizza => pizza.tipo.toLowerCase() === tipo.toLowerCase()) : Object.values(inventarioPizza);
 
+
     // Genera el menú en base a las pizzas filtradas
     pizzasFiltradas.forEach((pizza, index) => {
         menu += `${index + 1} - ${pizza.producto} ($${pizza.precio})\n`;
@@ -62,7 +63,7 @@ function agregarPizza() {
     // Asegura que hay opciones disponibles después del filtro
     if (pizzasFiltradas.length === 0) {
         alert("No hay pizzas disponibles para el filtro proporcionado. Mostrando todas las opciones.");
-        return filtrarYMostrarPizzas(); // Vuelve a mostrar todas las pizzas si el filtro no coincide
+        return agregarPizza(); // Vuelve a mostrar todas las pizzas si el filtro no coincide
     }
 
     let pizzaSeleccionada;
